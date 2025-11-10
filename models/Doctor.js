@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 
 const doctorSchema = new mongoose.Schema({
-  name: String,
-  specialty: String,
-  location: String,
-  mode: String, // online or offline
+  name: {
+    type: String,
+    required: true
+  },
+  specialty: {
+    type: String,
+    required: true
+  },
+  mode: {
+    type: String,
+    enum: ['Online', 'Offline'],
+    default: 'Online'
+  }
 });
 
 module.exports = mongoose.model('Doctor', doctorSchema);
