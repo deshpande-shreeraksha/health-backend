@@ -14,10 +14,9 @@ app.get('/', (req, res) => {
   res.send('Welcome to Health Care Backend API');
 });
 
-// API routes
-app.use('/api/doctors', require('./routes/doctorRoutes'));
-app.use('/api/medications', require('./routes/medicationRoutes'));
-app.use('/api/diagnostics', require('./routes/diagnosticRoutes'));
+// Routes
+const doctorRoutes = require('./routes/doctorRoutes');
+app.use('/api/doctors', doctorRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
